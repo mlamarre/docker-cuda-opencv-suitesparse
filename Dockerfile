@@ -3,7 +3,7 @@
 FROM mlamarre/cuda9.1-opencv3.4.0-dev
 MAINTAINER Mathieu Lamarre <mathieu.lamarre@gmail.com>
 
-ENV SUITESPARSE_VERSION 5.1.0
+ENV SUITESPARSE_VERSION 5.1.2
 
 WORKDIR /
 RUN mkdir /temp \
@@ -15,5 +15,5 @@ RUN mkdir /temp \
 && cd /SuiteSparse\
 && rm -rf /temp\
 && export LIBRARY_PATH=$LIBRARY_PATH/opt/conda/envs/ocvpy3/lib\
-&& make MKLROOT=/opt/conda/envs/ocvpy3 TBB="-ltbb -DSPQR_CONFIG=-DHAVE_TBB" INSTALL=/opt/SuiteSparse install\
+&& make MKLROOT=/opt/conda/envs/ocvpy3 TBB="-ltbb -DSPQR_CONFIG=-DHAVE_TBB" INSTALL=/opt/SuiteSparse -j$(nproc) install\
 && make purge
