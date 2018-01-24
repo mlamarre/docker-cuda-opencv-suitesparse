@@ -1,0 +1,11 @@
+--- SuiteSparse_config.mk	2017-12-03 03:24:44.000000000 +0000
++++ /home/mathieu/SuiteSparse_config.mk	2018-01-24 00:38:10.898172443 +0000
+@@ -158,7 +158,7 @@
+             #   $(MKLROOT)/lib/intel64/libmkl_intel_thread.a \
+             #   -Wl,--end-group -lpthread -lm
+             # using dynamic linking:
+-            BLAS = -lmkl_intel_lp64 -lmkl_core -lmkl_intel_thread -lpthread -lm
++            BLAS = -lmkl_intel_lp64 -lmkl_core -lmkl_tbb_thread -ltbb -lm
+             LAPACK =
+         else
+             # use the OpenBLAS at http://www.openblas.net
