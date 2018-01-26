@@ -14,6 +14,8 @@ RUN mkdir /temp \
 && patch < /temp/SuiteSparse_config_MKL_TBB.patch\
 && cd /SuiteSparse\
 && rm -rf /temp\
-&& export LIBRARY_PATH=$LIBRARY_PATH/opt/conda/envs/ocvpy3/lib\
-&& make MKLROOT=/opt/conda/envs/ocvpy3 TBB="-ltbb -DSPQR_CONFIG=-DHAVE_TBB" INSTALL=/opt/SuiteSparse -j$(nproc) install\
-&& make purge
+&& make MKLROOT=/opt/conda/envs/ocvpy3 TBB="-ltbb -DSPQR_CONFIG=-DHAVE_TBB" INSTALL=/usr/local -j$(nproc) install\
+&& cd /\
+&& rm -rf SuiteSparse
+
+RUN ldconfig -v
