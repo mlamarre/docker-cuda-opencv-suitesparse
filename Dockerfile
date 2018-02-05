@@ -4,10 +4,12 @@ FROM mlamarre/cuda9.1-opencv3.4.0-dev
 MAINTAINER Mathieu Lamarre <mathieu.lamarre@gmail.com>
 
 ENV SUITESPARSE_VERSION 5.1.2
+# Original source URL, however this server is slow (or blacklists IP after too much downloads)
+# http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-${SUITESPARSE_VERSION}.tar.gz
 
 WORKDIR /
 RUN mkdir /temp \
-&& wget http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-${SUITESPARSE_VERSION}.tar.gz -O /temp/SuiteSparse-${SUITESPARSE_VERSION}.tar.gz\
+&& wget https://launchpad.net/ubuntu/+archive/primary/+files/suitesparse_${SUITESPARSE_VERSION}.orig.tar.gz -O /temp/SuiteSparse-${SUITESPARSE_VERSION}.tar.gz\
 && wget https://raw.githubusercontent.com/mlamarre/docker-cuda-opencv-suitesparse/master/SuiteSparse_config_MKL_TBB.patch -O /temp/SuiteSparse_config_MKL_TBB.patch\
 && tar -xzvf /temp/SuiteSparse-${SUITESPARSE_VERSION}.tar.gz\
 && cd SuiteSparse/SuiteSparse_config\
