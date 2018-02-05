@@ -5,7 +5,7 @@
              #   -Wl,--end-group -lpthread -lm
              # using dynamic linking:
 -            BLAS = -lmkl_intel_lp64 -lmkl_core -lmkl_intel_thread -lpthread -lm
-+            BLAS = -lmkl_intel_lp64 -lmkl_tbb_thread -lmkl_core -ltbb -lstdc++ -lpthread -lm -ldl
++            BLAS = -lmkl_rt -lstdc++ -lpthread -lm -ldl
              LAPACK =
          else
              # use the OpenBLAS at http://www.openblas.net
