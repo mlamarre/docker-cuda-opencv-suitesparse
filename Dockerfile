@@ -1,9 +1,9 @@
 # Dockerfile for OpenCV with CUDA C++, Python 2.7 / 3.6 development 
 # Pulling CUDA-CUDNN image from nvidia
-FROM mlamarre/cuda9.2-opencv3.4.1-dev:master-54c37b3
+FROM mlamarre/cuda9.2-opencv3.4.1-dev:master-5278797
 MAINTAINER Mathieu Lamarre <mathieu.lamarre@gmail.com>
 
-ENV SUITESPARSE_VERSION 5.2.0
+ENV SUITESPARSE_VERSION 5.3.0
 
 WORKDIR /
 RUN mkdir /temp \
